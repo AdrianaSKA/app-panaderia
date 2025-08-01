@@ -1,0 +1,121 @@
+
+.description {
+    padding: 100px 0;
+    background-color: #f9f9f9;
+}
+
+.description-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #1a2a3a;
+    font-weight: 300;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: #c0a062;
+    margin: 15px auto 0;
+}
+
+.description-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.description-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.description-text p {
+    margin-bottom: 20px;
+}
+
+.description-image img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.features {
+    margin-top: 30px;
+}
+
+.feature {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.feature-icon {
+    font-size: 1.8rem;
+    color: #c0a062;
+    margin-top: 5px;
+}
+
+.feature-text h4 {
+    margin: 0 0 5px;
+    color: #1a2a3a;
+    font-size: 1.1rem;
+}
+
+.feature-text p {
+    margin: 0;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.description-image {
+    position: relative;
+}
+
+.description-image img {
+    width: 80%; 
+    max-width: 500px; 
+    height: auto; 
+    border-radius: 5px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.experience-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background-color: #c0a062;
+    color: white;
+    padding: 20px;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(192, 160, 98, 0.3);
+}
+
+.years {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.text {
+    font-size: 0.7rem;
+    margin-top: 5px;
+}

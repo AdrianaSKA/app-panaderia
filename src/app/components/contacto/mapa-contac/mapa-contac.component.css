@@ -1,0 +1,14 @@
+.contacto-mapa {
+    padding: 0;
+}
+
+.mapa-container {
+    width: 100%;
+}
+
+.mapa-container iframe {
+    display: block;
+    width: 100%;
+    height: 450px;
+    border: none;
+}

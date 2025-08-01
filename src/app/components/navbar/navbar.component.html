@@ -1,0 +1,37 @@
+<nav class="navbar">
+    <div class="navbar-container">
+        <a href="/" class="navbar-logo">
+            <span class="logo-icon"><i class="fas fa-bread-slice"></i></span>
+            <span class="logo-text">Panadería Deluxe</span>
+        </a>
+
+        <div class="navbar-links">
+            <a routerLink="/" class="nav-link active">Inicio</a>
+            <a routerLink="/productos" class="nav-link">Productos</a>
+            <a routerLink="/nosotros" class="nav-link">Nosotros</a>
+            <a routerLink="/contacto" class="nav-link">Contacto</a>
+            <a routerLink="/suscripcion" class="nav-link">Suscripción</a>
+        </div>
+
+        <div class="navbar-actions">
+            <a href="#" class="nav-icon"><i class="fas fa-search"></i></a>
+            <a href="#" class="nav-icon"><i class="fas fa-user"></i></a>
+            <a href="#" class="nav-icon cart-icon">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </a>
+            <button class="mobile-menu-btn" (click)="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+
+    <div class="mobile-menu" [class.active]="isMenuOpen">
+        <a href="/" class="mobile-link active">Inicio</a>
+        <a href="/productos" class="mobile-link">Productos</a>
+        <a href="/nosotros" class="mobile-link">Nosotros</a>
+        <a href="/contacto" class="mobile-link">Contacto</a>
+        <a href="/suscripcion" class="nav-link">Suscripción</a>
+    </div>
+</nav>

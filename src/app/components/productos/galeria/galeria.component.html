@@ -1,0 +1,36 @@
+<section class="galeria">
+    <div class="galeria-header">
+        <h2 class="section-title">Nuestros Productos</h2>
+        <button class="add-product-btn" [routerLink]="['/productos/nuevo']">
+            <i class="fas fa-plus"></i> Añadir Nuevo Producto
+        </button>
+    </div>
+
+    <div class="galeria-container">
+        @for (producto of productos; track producto.id) {
+        <div class="producto-card">
+            <div class="producto-imagen">
+                <img [src]="producto.imagenUrl" [alt]="producto.nombre">
+                @if (producto.nuevo) {
+                <div class="producto-badge">Nuevo</div>
+                }
+            </div>
+            <div class="producto-info">
+                <h3>{{ producto.nombre }}</h3>
+                <p class="producto-desc">{{ producto.descripcion }}</p>
+                <div class="producto-precio">{{ producto.precio}}</div>
+                <div class="producto-actions">
+                    <button class="edit-btn" [routerLink]="['/productos/editar', producto.id]">
+                        <i class="fas fa-edit"></i> Editar
+                    </button>
+                    <button class="delete-btn" (click)="eliminarProducto(producto.id)">
+                        <i class="fas fa-trash-alt"></i> Eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
+        } @empty {
+        <p class="no-products">No hay productos disponibles</p>
+        }
+    </div>
+</section>

@@ -12,12 +12,12 @@ import { FormsModule } from '@angular/forms';
 })
 export class EditarProductoComponent {
 
-  id: string = ''; 
+  id: string = '';
   producto: any = {
     nombre: '',
     descripcion: '',
     precio: 0,
-    categoria: 'panes',
+    categoria: '',
     imagenUrl: '',
     nuevo: false
   };
@@ -30,19 +30,22 @@ export class EditarProductoComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.id=params['id'];})
-    this.productoService.getProductoById(this.id).subscribe(producto =>{ 
-      
-      error: (err:any) => {
-        console.error('Error al cargar producto:', err);
-        alert('Ocurrió un error al cargar el producto');
-      }
+      this.id = params['id'];
+      this.productoService.getProductoById(this.id).subscribe({
+        next: (producto) => {
+          this.producto = producto;
+        },
+        error: (err) => {
+          console.error('Error al cargar producto:', err);
+          alert('Ocurrió un error al cargar el producto');
+        }
+      });
     });
   }
 
+
   actualizarProducto(formulario: any): void {
-    if (formulario.valid) {
-      const productoActualizado={...formulario.value, id: this.id}
+      const productoActualizado = { ...formulario.value, id: this.id }
       this.productoService.actualizarProducto(this.id, productoActualizado).subscribe({
         next: () => {
           this.router.navigate(['/productos']);
@@ -52,7 +55,6 @@ export class EditarProductoComponent {
           alert('Ocurrió un error al actualizar el producto');
         }
       });
-    }
   }
 
 }

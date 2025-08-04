@@ -14,7 +14,7 @@ export const routes: Routes = [
     { path: 'productos', component: ProductosComponent, title: 'Panadería Deluxe - Productos' },
     { path: 'suscripcion', component: SuscripcionComponent, title: 'Panadería Deluxe - Suscripción' },
     { path: 'productos/nuevo', component: CrearProductoComponent, title: 'Panadería Deluxe - Nuevo Producto' },
-    { path: 'productos/editar/:id', component: EditarProductoComponent, title: 'Panadería Deluxe - Editar Producto' },
+    { path: 'productos-editar/:id', component: EditarProductoComponent, title: 'Panadería Deluxe - Editar Producto' },
     { path: 'nosotros', component: NosotrosComponent, title: 'Panadería Deluxe - Nosotros' },
     { path: 'contacto', component: ContactoComponent, title: 'Panadería Deluxe - Contacto' },
     { path: '**', redirectTo: '', pathMatch: 'full' }

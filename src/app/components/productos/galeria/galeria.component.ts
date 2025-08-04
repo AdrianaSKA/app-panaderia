@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductoService } from '../../../service/producto.service';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-galeria',
@@ -13,15 +13,9 @@ export class GaleriaComponent {
   productos: any[] = [];
 
   constructor(
-    private productoService: ProductoService,
-    private router: Router
-  ) { }
+    private productoService: ProductoService,) { }
 
   ngOnInit(): void {
-    this.cargarProductos();
-  }
-
-  cargarProductos(): void {
     this.productoService.getProductos().subscribe(data => {
       this.productos = Object.keys(data).map(key => ({
         id: key,

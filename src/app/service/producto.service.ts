@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductoService {
-  private API_PRODUCTOS = 'https://app-panaderia-a464d-default-rtdb.firebaseio.com'; 
+  private API_PRODUCTOS = 'https://app-panaderia-a464d-default-rtdb.firebaseio.com';
 
   constructor(private http: HttpClient) { }
 
@@ -15,7 +15,7 @@ export class ProductoService {
   }
 
   getProductoById(id: string): Observable<any> {
-    return this.http.get(`${this.API_PRODUCTOS}/${id}.json`);
+    return this.http.get(`${this.API_PRODUCTOS}/productos/${id}.json`);
   }
 
   crearProducto(producto: any): Observable<any> {

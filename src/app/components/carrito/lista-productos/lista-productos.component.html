@@ -1,0 +1,20 @@
+<div class="lista-compra">
+    <h2>Productos seleccionados</h2>
+    
+    <div class="items-carrito">
+        @for (item of carritoService.carrito$ | async; track $index) {
+        <div class="item-carrito">
+            <div class="item-info">
+                <span class="nombre">{{ item.nombre }}</span>
+                <span class="precio">{{ item.precio | currency }}</span>
+                <span class="cantidad">x{{ item.cantidad || 1 }}</span>
+            </div>
+            <button class="eliminar-btn" (click)="carritoService.eliminarProducto(item.id)">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        } @empty {
+        <p class="carrito-vacio">Tu carrito está vacío</p>
+        }
+    </div>
+</div>

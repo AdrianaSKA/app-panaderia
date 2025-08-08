@@ -1,0 +1,25 @@
+.pagina-carrito {
+
+    font-family: 'Montserrat', sans-serif;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pagina-carrito h1 {
+    text-align: center;
+    color: #1a2a3a;
+    margin-bottom: 30px;
+}
+
+.contenedor-carrito {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .contenedor-carrito {
+        grid-template-columns: 1fr;
+    }
+}

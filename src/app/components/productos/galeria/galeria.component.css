@@ -170,3 +170,67 @@
     color: white;
     border-color: #1a2a3a;
 }
+
+
+/* Estilos para el botón de comprar */
+.buy-btn {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.buy-btn:hover {
+    background-color: #45a049; /* Verde más oscuro al pasar el mouse */
+}
+
+.buy-btn i {
+    font-size: 0.9rem;
+}
+
+/* Ajustes para los botones de acciones */
+.producto-actions {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+/* Estilos para el botón del carrito en el header */
+.cart-btn {
+    background-color: #c0a062; /* Dorado */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.cart-btn:hover {
+    background-color: #a08652; /* Dorado más oscuro */
+}
+
+.cart-btn i {
+    margin-right: 5px;
+}
+
+/* Ajustes para el header de la galería */
+.galeria-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}

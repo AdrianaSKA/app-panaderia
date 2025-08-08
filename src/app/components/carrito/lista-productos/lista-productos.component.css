@@ -1,0 +1,67 @@
+.lista-compra h2 {
+    color: #1a2a3a;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.items-carrito {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.item-carrito {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-info {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.nombre {
+    font-weight: 500;
+    flex: 1;
+}
+
+.precio {
+    color: #c0a062;
+    font-weight: bold;
+    min-width: 80px;
+    text-align: right;
+}
+
+.cantidad {
+    background-color: #e0e0e0;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.carrito-vacio {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 40px 0;
+}
+
+.eliminar-btn {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 10px;
+    transition: color 0.3s;
+}
+
+.eliminar-btn:hover {
+    color: #cc0000;
+}

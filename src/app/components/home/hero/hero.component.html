@@ -1,11 +1,24 @@
-
 <section class="hero">
     <div class="hero-content">
         <h1 class="hero-title">Panadería Artesanal de Lujo</h1>
+        @if (authServicio.sesionIniciada()) {
         <p class="hero-subtitle">Descubre el auténtico sabor de la tradición con un toque moderno</p>
         <div class="hero-buttons">
             <a href="/productos" class="hero-button">Nuestra Selección</a>
             <a href="/contacto" class="hero-button outline">Visítanos</a>
         </div>
+        }
+        @if (!authServicio.sesionIniciada()) {
+        <p class="hero-subtitle">Descubre una experiencia gastronómica exclusiva donde la tradición se encuentra con la
+            excelencia</p>
+        <div class="hero-cta">
+            <p class="hero-text">Para acceder a nuestra selección premium de panes y pastelería artesanal, le invitamos
+                a crear una cuenta o iniciar sesión</p>
+            <div class="hero-buttons">
+                <a href="/registro" class="hero-button">Registrarse</a>
+                <a href="/login" class="hero-button outline">Iniciar Sesión</a>
+            </div>
+        </div>
+        }
     </div>
 </section>

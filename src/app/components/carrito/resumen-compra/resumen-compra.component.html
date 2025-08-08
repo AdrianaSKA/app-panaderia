@@ -1,0 +1,27 @@
+<div class="resumen-compra">
+    <h3>Resumen de Compra</h3>
+    
+    <div class="totales">
+        <div class="subtotal">
+            <span>Subtotal:</span>
+            <span>{{ calcularSubtotal() | currency }}</span>
+        </div>
+        <div class="iva">
+            <span>IVA ({{ ivaPorcentaje }}%):</span>
+            <span>{{ calcularSubtotal() | calcularIva:ivaPorcentaje | currency }}</span>
+        </div>
+        <div class="total">
+            <span>Total:</span>
+            <span>{{ calcularSubtotal() | calcularTotal:ivaPorcentaje | currency }}</span>
+        </div>
+    </div>
+
+    <div class="acciones">
+        <button class="cancelar-btn" (click)="cancelarCompra()" [disabled]="items.length === 0">
+            Cancelar compra
+        </button>
+        <button class="checkout-btn" (click)="finalizarCompra()" [disabled]="items.length === 0">
+            Proceder al pago
+        </button>
+    </div>
+</div>

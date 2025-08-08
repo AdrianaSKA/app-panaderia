@@ -1,0 +1,53 @@
+<div class="registration-container">
+    <div class="registration-form">
+        <h2 class="registration-title">Registro de Usuario</h2>
+        <form [formGroup]="registroForm" (ngSubmit)="registrar()">
+            <div class="form-field">
+                <input formControlName="nombre" type="text" id="nombre" class="form-input-underline" placeholder=" "
+                    required />
+                <label for="nombre" class="floating-label">Nombre completo</label>
+                @if (registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched) {
+                <span class="error-text">El nombre es obligatorio</span>
+                }
+            </div>
+
+            <div class="form-field">
+                <input formControlName="direccion" type="text" id="direccion" class="form-input-underline"
+                    placeholder=" " required />
+                <label for="direccion" class="floating-label">Dirección</label>
+                @if (registroForm.get('direccion')?.invalid && registroForm.get('direccion')?.touched) {
+                <span class="error-text">La dirección es obligatoria</span>
+                }
+            </div>
+
+            <div class="form-field">
+                <input formControlName="fechaNacimiento" type="date" id="fechaNacimiento" class="form-input-underline"
+                    placeholder=" " required />
+                <label for="fechaNacimiento" class="floating-label">Fecha de nacimiento</label>
+                @if (registroForm.get('fechaNacimiento')?.invalid && registroForm.get('fechaNacimiento')?.touched) {
+                <span class="error-text">La fecha de nacimiento es obligatoria</span>
+                }
+            </div>
+
+            <div class="form-field">
+                <input formControlName="correo" type="email" id="correo" class="form-input-underline" placeholder=" "
+                    required />
+                <label for="correo" class="floating-label">Correo electrónico</label>
+                @if (registroForm.get('correo')?.invalid && registroForm.get('correo')?.touched) {
+                <span class="error-text">El correo electrónico no es correcto</span>
+                }
+            </div>
+
+            <div class="form-field">
+                <input formControlName="password" type="password" id="password" class="form-input-underline"
+                    placeholder=" " required />
+                <label for="password" class="floating-label">Contraseña</label>
+                @if (registroForm.get('password')?.invalid && registroForm.get('password')?.touched) {
+                <span class="error-text">Password incorrecta</span>
+                }
+            </div>
+
+            <button type="submit" class="register-button">Registrar</button>
+        </form>
+    </div>
+</div>

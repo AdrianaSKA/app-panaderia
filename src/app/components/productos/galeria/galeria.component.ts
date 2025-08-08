@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductoService } from '../../../service/producto.service';
 import { RouterLink } from '@angular/router';
+import { CarritoService } from '../../../service/carrito.service';
 
 @Component({
   selector: 'app-galeria',
@@ -13,7 +14,9 @@ export class GaleriaComponent {
   productos: any[] = [];
 
   constructor(
-    private productoService: ProductoService,) { }
+    private productoService: ProductoService,
+    private carritoService: CarritoService 
+  ) { }
 
   ngOnInit(): void {
     this.productoService.getProductos().subscribe(data => {
@@ -30,6 +33,12 @@ export class GaleriaComponent {
         this.productos = this.productos.filter(p => p.id !== id);
       });
     }
+  }
+
+
+  comprarProducto(producto: any): void {
+    this.carritoService.agregarProducto(producto);
+    alert(`${producto.nombre} se ha añadido al carrito`);
   }
 
 }

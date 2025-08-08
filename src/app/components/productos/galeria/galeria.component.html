@@ -1,9 +1,11 @@
 <section class="galeria">
     <div class="galeria-header">
         <h2 class="section-title">Nuestros Productos</h2>
-        <button class="add-product-btn" [routerLink]="['/productos/nuevo']">
-            <i class="fas fa-plus"></i> Añadir Nuevo Producto
-        </button>
+        <div>
+            <button class="add-product-btn" [routerLink]="['/productos/nuevo']">
+                <i class="fas fa-plus"></i> Añadir Nuevo Producto
+            </button>
+        </div>
     </div>
 
     <div class="galeria-container">
@@ -20,6 +22,9 @@
                 <p class="producto-desc">{{ producto.descripcion }}</p>
                 <div class="producto-precio">{{ producto.precio}}</div>
                 <div class="producto-actions">
+                    <button class="buy-btn" (click)="comprarProducto(producto)">
+                        <i class="fas fa-cart-plus"></i> Comprar
+                    </button>
                     <button class="edit-btn" [routerLink]="['/productos-editar', producto.id]">
                         <i class="fas fa-edit"></i> Editar
                     </button>

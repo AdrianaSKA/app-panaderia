@@ -9,42 +9,21 @@ export class AutenticacionService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl = 'https://app-panaderia-a464d-default-rtdb.firebaseio.com';
+  private apiUrl = 'http://localhost:8080/usuarios';
 
 
 
-  login(usuario: string, password: string): Observable<boolean> {
-    return this.http.get<{ [key: string]: any }>(`${this.apiUrl}/usuarios.json`)
-      .pipe(
-        map(usuariosObj => {
-          if (!usuariosObj) return false;
-
-          const usuarios = Object.values(usuariosObj);
-
-          const usuarioEncontrado = usuarios.find(u =>
-            u.nombre === usuario && u.password === password
-          );
-
-          if (usuarioEncontrado) {
-            localStorage.setItem('user', JSON.stringify(usuarioEncontrado));
-            return true;
-          } else {
-            return false;
-          }
-        })
-      );
+  login(usuario: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login`, { usuario, password });
   }
 
 
-
-  sesionIniciada = () => {
-    return localStorage.getItem('user') !== null;
+  sesionIniciada(): boolean {
+    return localStorage.getItem('usuario') !== null;
   }
-
 
   logout(): void {
-    localStorage.removeItem('user');
+    localStorage.removeItem('usuario');
   }
-
 }
 

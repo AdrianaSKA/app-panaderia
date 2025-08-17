@@ -19,16 +19,28 @@ export class LoginComponent {
   constructor(private authServicio: AutenticacionService, private router: Router) { }
 
   login = () => {
-    this.authServicio.login(this.usuario, this.password).subscribe(sesionExitosa => {
-      if (sesionExitosa) {
-        const redireccion = localStorage.getItem('redirectUrl') || '/empleados';
-        localStorage.removeItem('redirectUrl');
-        this.router.navigateByUrl(redireccion);
-      } else {
+    this.authServicio.login(this.usuario, this.password).subscribe({
+      next: (usuario: any) => {
+        if (!usuario) {
+          this.error = 'Usuario o contraseña incorrecta';
+          return;
+        }
+
+        localStorage.setItem('usuario', JSON.stringify(usuario));
+
+        if (usuario.rol === 'ADMIN') {
+          this.router.navigate(['/admin']);
+        } else {
+          this.router.navigate(['/']);
+        }
+      },
+      error: (err) => {
+        console.error(err);
         this.error = 'Error al iniciar sesión';
       }
     });
   }
+
 
 
 

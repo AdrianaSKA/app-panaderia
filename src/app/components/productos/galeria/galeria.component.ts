@@ -12,20 +12,27 @@ import { CarritoService } from '../../../service/carrito.service';
 })
 export class GaleriaComponent {
   productos: any[] = [];
+  rolUsuario: string = '';
 
   constructor(
     private productoService: ProductoService,
     private carritoService: CarritoService 
   ) { }
 
-  ngOnInit(): void {
-    this.productoService.getProductos().subscribe(data => {
-      this.productos = Object.keys(data).map(key => ({
-        id: key,
-        ...data[key]
-      }));
-    });
+
+ngOnInit(): void {
+  const usuario = localStorage.getItem('usuario');
+  if (usuario) {
+    this.rolUsuario = JSON.parse(usuario).rol;
   }
+
+  this.productoService.getProductos().subscribe(data => {
+    this.productos = Object.keys(data).map(key => ({
+      id: key,
+      ...data[key]
+    }));
+  });
+}
 
   eliminarProducto(id: string): void {
     if (confirm('¿Estás seguro de eliminar este producto?')) {

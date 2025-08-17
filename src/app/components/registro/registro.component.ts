@@ -23,31 +23,32 @@ export class RegistroComponent {
     direccion: ['', Validators.required],
     fechaNacimiento: ['', Validators.required],
     correo: ['', [Validators.required, Validators.email]],
+    rol: ['CLIENTE', Validators.required],
     password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]]
   });
 
-registrar = () => {
-  if (this.registroForm.valid) {
-    this.enviado = true;
+  registrar = () => {
+    if (this.registroForm.valid) {
+      this.enviado = true;
 
-    const nuevoUsuario = this.registroForm.value;
+      const nuevoUsuario = this.registroForm.value;
 
-    this.usuarioService.crearUsuario(nuevoUsuario).subscribe({
-      next: () => {
-        console.log('Registro exitoso', nuevoUsuario);
-        alert('Usuario registrado correctamente');
-        this.registroForm.reset();
-        this.router.navigateByUrl('/login');
-      },
-      error: (error) => {
-        console.error('Error al registrar usuario:', error);
-        alert('Error al registrar usuario');
-      }
-    });
-  } else {
-    this.registroForm.markAllAsTouched();
+      this.usuarioService.crearUsuario(nuevoUsuario).subscribe({
+        next: () => {
+          console.log('Registro exitoso', nuevoUsuario);
+          alert('Usuario registrado correctamente');
+          this.registroForm.reset({rol: 'CLIENTE'});
+          this.router.navigateByUrl('/login');
+        },
+        error: (error) => {
+          console.error('Error al registrar usuario:', error);
+          alert('Error al registrar usuario');
+        }
+      });
+    } else {
+      this.registroForm.markAllAsTouched();
+    }
   }
-}
 
 
 

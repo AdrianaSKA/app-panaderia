@@ -7,12 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class SuscripcionService {
 
-    private API_SUSCRIPCION = 'https://app-panaderia-a464d-default-rtdb.firebaseio.com'; 
+  private API_SPRING = "http://localhost:8080/suscripciones"
 
-    constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   crearSuscripcion(suscripcion: any): Observable<any> {
-    return this.http.post(`${this.API_SUSCRIPCION}/suscripciones.json`, suscripcion);
-    
+    return this.http.post(`${this.API_SPRING}/guardar`, suscripcion)
   }
 }

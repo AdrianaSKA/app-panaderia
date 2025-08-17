@@ -114,3 +114,16 @@
     background-color: #cccccc;
     cursor: not-allowed;
 }
+
+.error-text {
+
+    color: #d9534f;
+    
+}
+
+.mensaje-rol {
+    text-align: center;   
+    color: rgb(197, 26, 26);             
+    margin-top: 20px;     
+    font-weight: bold;    
+}

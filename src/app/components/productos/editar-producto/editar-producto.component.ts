@@ -22,26 +22,34 @@ export class EditarProductoComponent {
     nuevo: false
   };
 
+  rolUsuario: string = '';
+
   constructor(
     private productoService: ProductoService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
 
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
-      this.productoService.getProductoById(this.id).subscribe({
-        next: (producto) => {
-          this.producto = producto;
-        },
-        error: (err) => {
-          console.error('Error al cargar producto:', err);
-          alert('Ocurrió un error al cargar el producto');
-        }
-      });
-    });
+ngOnInit(): void {
+  const usuario = localStorage.getItem('usuario');
+  if (usuario) {
+    this.rolUsuario = JSON.parse(usuario).rol;
   }
+
+
+  this.route.params.subscribe(params => {
+    this.id = params['id'];
+    this.productoService.getProductoById(this.id).subscribe({
+      next: (producto) => {
+        this.producto = producto;
+      },
+      error: (err) => {
+        console.error('Error al cargar producto:', err);
+        alert('Ocurrió un error al cargar el producto');
+      }
+    });
+  });
+}
 
 
   actualizarProducto(formulario: any): void {

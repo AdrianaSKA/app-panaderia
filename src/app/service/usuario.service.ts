@@ -7,21 +7,21 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
+  private API_SPRING = "http://localhost:8080/usuarios"
 
-  private API_URL = 'https://app-panaderia-a464d-default-rtdb.firebaseio.com';
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getUsuarios(): Observable<any> {
-    return this.http.get(`${this.API_URL}/usuarios.json`);
+    return this.http.get(`${this.API_SPRING}`)
   }
 
   getUsuarioById(id: string): Observable<any> {
-    return this.http.get(`${this.API_URL}/usuarios/${id}.json`);
+    return this.http.get(`${this.API_SPRING}/${id}`);
   }
 
   crearUsuario(usuario: any): Observable<any> {
-    return this.http.post(`${this.API_URL}/usuarios.json`, usuario);
+    return this.http.post(`${this.API_SPRING}/guardar`, usuario)
   }
+
 
 }

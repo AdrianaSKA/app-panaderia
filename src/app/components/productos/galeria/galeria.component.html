@@ -2,9 +2,11 @@
     <div class="galeria-header">
         <h2 class="section-title">Nuestros Productos</h2>
         <div>
+            @if (rolUsuario === 'ADMIN') {
             <button class="add-product-btn" [routerLink]="['/productos/nuevo']">
                 <i class="fas fa-plus"></i> Añadir Nuevo Producto
             </button>
+            }
         </div>
     </div>
 
@@ -25,12 +27,14 @@
                     <button class="buy-btn" (click)="comprarProducto(producto)">
                         <i class="fas fa-cart-plus"></i> Comprar
                     </button>
-                    <button class="edit-btn" [routerLink]="['/productos-editar', producto.id]">
+                    @if (rolUsuario === 'ADMIN') {
+                    <button  [disabled]="rolUsuario !== 'ADMIN'" class="edit-btn" [routerLink]="['/productos-editar', producto.id]">
                         <i class="fas fa-edit"></i> Editar
                     </button>
-                    <button class="delete-btn" (click)="eliminarProducto(producto.id)">
+                    <button [disabled]="rolUsuario !== 'ADMIN'" class="delete-btn" (click)="eliminarProducto(producto.id)">
                         <i class="fas fa-trash-alt"></i> Eliminar
                     </button>
+                    }
                 </div>
             </div>
         </div>

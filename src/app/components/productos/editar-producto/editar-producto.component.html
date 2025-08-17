@@ -41,7 +41,7 @@
 
         <div class="form-actions">
             <button type="button" routerLink="/productos" class="btn-secondary">Cancelar</button>
-            <button type="submit" class="btn-primary" [disabled]="!formulario.valid">
+            <button type="submit" class="btn-primary" [disabled]="!formulario.valid || rolUsuario !== 'ADMIN'">
                 Actualizar Producto
             </button>
         </div>

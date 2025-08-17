@@ -6,27 +6,27 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductoService {
-  private API_PRODUCTOS = 'https://app-panaderia-a464d-default-rtdb.firebaseio.com';
+private API_SPRING = "http://localhost:8080/productos"
 
   constructor(private http: HttpClient) { }
 
   getProductos(): Observable<any> {
-    return this.http.get(`${this.API_PRODUCTOS}/productos.json`);
+    return this.http.get(`${this.API_SPRING}`)
   }
 
   getProductoById(id: string): Observable<any> {
-    return this.http.get(`${this.API_PRODUCTOS}/productos/${id}.json`);
+    return this.http.get(`${this.API_SPRING}/${id}`);
   }
 
   crearProducto(producto: any): Observable<any> {
-    return this.http.post(`${this.API_PRODUCTOS}/productos.json`, producto);
+    return this.http.post(`${this.API_SPRING}/guardar`, producto)
   }
 
   actualizarProducto(id: string, producto: any): Observable<any> {
-    return this.http.put(`${this.API_PRODUCTOS}/productos/${id}.json`, producto);
+    return this.http.put(`${this.API_SPRING}/editar/${id}`, producto);
   }
 
   eliminarProducto(id: string): Observable<any> {
-    return this.http.delete(`${this.API_PRODUCTOS}/productos/${id}.json`);
+    return this.http.delete(`${this.API_SPRING}/eliminar/${id}`);
   }
 }

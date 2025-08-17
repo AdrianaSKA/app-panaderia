@@ -1,48 +1,71 @@
-<div class="form-container">
+<div class="form-container" >
     <h1>Nuevo Producto</h1>
 
-    <form class="product-form" (ngSubmit)="crearProducto()">
+    @if (rolUsuario !== 'ADMIN') {
+    <div class="mensaje-rol">
+        <h3>Solo el Administrador puede crear productos</h3>
+    </div>
+    }
+
+    <form [formGroup]="productoForm" (ngSubmit)="guardarProducto()" class="product-form" >
+
         <div class="form-group">
             <label for="nombre">Nombre *</label>
-            <input type="text" id="nombre" [(ngModel)]="nombre" name="nombre" />
+            <input type="text" id="nombre" formControlName="nombre" />
+            @if (productoForm.get('nombre')?.invalid && productoForm.get('nombre')?.touched) {
+            <span class="error-text">El nombre debe tener al menos 3 caracteres.</span>
+            }
         </div>
 
         <div class="form-group">
             <label for="descripcion">Descripción *</label>
-            <textarea id="descripcion" [(ngModel)]="descripcion" name="descripcion" rows="4"></textarea>
+            <textarea id="descripcion" formControlName="descripcion" rows="4"></textarea>
+            @if (productoForm.get('descripcion')?.invalid && productoForm.get('descripcion')?.touched) {
+            <span class="error-text">La descripción debe tener al menos 10 caracteres.</span>
+            }
         </div>
 
         <div class="form-row">
             <div class="form-group">
                 <label for="precio">Precio *</label>
-                <input type="number" id="precio" [(ngModel)]="precio" name="precio" />
+                <input type="number" id="precio" formControlName="precio" />
+                @if (productoForm.get('precio')?.invalid && productoForm.get('precio')?.touched) {
+                <span class="error-text">Ingrese un precio mayor que 0.</span>
+                }
             </div>
 
             <div class="form-group">
                 <label for="categoria">Categoría *</label>
-                <select id="categoria" [(ngModel)]="categoria" name="categoria">
+                <select id="categoria" formControlName="categoria">
                     <option value="">-- Seleccionar --</option>
                     <option value="panes">Panes</option>
                     <option value="pasteles">Pasteles</option>
                     <option value="reposteria">Repostería</option>
                     <option value="especiales">Especiales</option>
                 </select>
+                @if (productoForm.get('categoria')?.invalid && productoForm.get('categoria')?.touched) {
+                <span class="error-text">Seleccione una categoría.</span>
+                }
             </div>
         </div>
 
         <div class="form-group">
             <label for="imagenUrl">URL de la imagen *</label>
-            <input type="text" id="imagenUrl" [(ngModel)]="imagenUrl" name="imagenUrl" />
+            <input type="text" id="imagenUrl" formControlName="imagenUrl" />
+            @if (productoForm.get('imagenUrl')?.invalid && productoForm.get('imagenUrl')?.touched) {
+            <span class="error-text">Ingrese una URL válida.</span>
+            }
         </div>
 
         <div class="form-checkbox">
-            <input type="checkbox" id="nuevo" [(ngModel)]="nuevo" name="nuevo" />
+            <input type="checkbox" id="nuevo" formControlName="nuevo" />
             <label for="nuevo">Producto destacado</label>
         </div>
 
         <div class="form-actions">
             <button type="button" routerLink="/productos" class="btn-secondary">Cancelar</button>
-            <button type="submit" class="btn-primary">Guardar Producto</button>
+            <button type="submit" class="btn-primary"
+                [disabled]="productoForm.invalid || rolUsuario !== 'ADMIN'">Guardar Producto</button>
         </div>
     </form>
 </div>
